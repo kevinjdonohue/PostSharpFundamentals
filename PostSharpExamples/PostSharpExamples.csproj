@@ -45,11 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Aspects\LogAttribute.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="CustomerServices.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="aspect-oriented-programming-notes.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
