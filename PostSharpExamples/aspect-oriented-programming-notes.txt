@@ -1,0 +1,55 @@
+﻿Aspect Oriented Programming Notes
+===============================================================================
+
+What?
+-------------------------------------------------------------------------------
+Managing code in "cross cutting" concerns
+
+Increasing the modularity of our codebase
+
+Cxomposition of code infrastructure concerns
+
+Examples:  Autiting, Logging, Security (Authentication Authorization), Perf. Monitoring, etc.
+
+
+Why?
+-------------------------------------------------------------------------------
+
+Reduce code duplication
+
+Keep code singly responsible (SRP - S in SOLID)
+
+DRY code
+
+Modularity
+
+
+How?
+-------------------------------------------------------------------------------
+
+Two main ways:  Interceptors and IL Weaving
+
+Interceptors:
+
+Basic Decorator Pattern
+
+Commonly implemented through IoC containers
+
+IL Weaving:
+
+Much more complex possibilities
+
+Requires a post compile step
+
+**PostSharp is an example of an IL Weaving AOP framework** (my note - not from the class)
+
+Summary
+-------------------------------------------------------------------------------
+
+Technique for managing cross cutting concerns
+
+Helps to create and manage good code structure
+
+Can be implemented using different techniques (Inteceptors [IoC Containers] vs IL Weaving [PostSharp])
+
+
