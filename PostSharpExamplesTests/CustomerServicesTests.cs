@@ -1,26 +1,33 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using FluentAssertions;
+using Ploeh.AutoFixture;
 using PostSharpExamples;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace PostSharpExamplesTests
 {
-    public class CustomerServicesTests
+    public class CustomerServicesTests : IDisposable
     {
-        private ITestOutputHelper _output;
+        private Fixture _fixture;
 
-        public CustomerServicesTests(ITestOutputHelper output)
+        public CustomerServicesTests()
         {
-            _output = output;
+            _fixture = new Fixture();
+        }
+
+        public void Dispose()
+        {
+            _fixture = null;
         }
 
         [Fact]
         public void WhenSaveIsCalled_ThenLogAspectShouldFire_OnEntry_OnSuccess_OnExit()
         {
             //arrange
-            CustomerServices customerServices = new CustomerServices();
-            Customer customer = new Customer();
+            ICustomerRepository customerRepository = new CustomerRepository();
+            CustomerServices customerServices = new CustomerServices(customerRepository);
+            Customer customer = _fixture.Create<Customer>();
             Queue<string> expectedMessages = new Queue<string>();
             expectedMessages.Enqueue("PostSharpExamples.Save OnEntry");
             expectedMessages.Enqueue("PostSharpExamples.Save OnSuccess returns True");
@@ -33,6 +40,8 @@ namespace PostSharpExamplesTests
             result.Should().BeTrue();
             Logger.Messages.Should().HaveCount(3, "we added three messages to the logger from the Log Aspect's point cuts, OnEntry, OnSuccess, and OnExit methods.");
             Logger.Messages.ShouldBeEquivalentTo(expectedMessages, options => options.WithStrictOrdering(), "the messages should be in expected order: OnEntry, OnSuccess, OnExit.");
+            Customer storedCustomer = customerRepository.Read(customer.CustomerId);
+            storedCustomer.Should().Be(customer);
         }
     }
 }

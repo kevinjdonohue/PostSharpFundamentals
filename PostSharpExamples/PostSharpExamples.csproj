@@ -45,9 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Address.cs" />
     <Compile Include="Aspects\LogAttribute.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="CustomerRepository.cs" />
     <Compile Include="CustomerServices.cs" />
+    <Compile Include="ICustomerRepository.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

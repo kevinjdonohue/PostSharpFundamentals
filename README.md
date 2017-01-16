@@ -86,9 +86,10 @@ Three (3) items that you will commonly interact with that come from the MethodEx
 
 - Arguments
   - List of value being passed to the target method
-  - List of objects; not names or properties of the parameters (distinct from Parameters)
+  - List of object values; not names or properties of the parameters (distinct from Parameters)
 - Method
   - Meta-data information about the target
+    - ex. GetParameters() - returns meta-data about the parameters
   - Reflection-based
 - ReturnValue
   - Null if method is Void
